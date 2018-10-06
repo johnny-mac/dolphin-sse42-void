@@ -187,7 +187,7 @@ if(NOT ENABLE_GENERIC)
 		if(_ARCH_64)
 			set(_M_X86 1)
 			set(_M_X86_64 1)
-			add_definitions(-D_M_X86=1 -D_M_X86_64=1 -msse2)
+			add_definitions(-D_M_X86=1 -D_M_X86_64=1 -msse4.2)
 			set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fno-pie")
 		else()
 			message(FATAL_ERROR "x86_32 is an unsupported platform. Enable generic build if you really want a JIT-less binary.")
@@ -296,7 +296,7 @@ if(APPLE)
 	# This avoids a warning when linking with QuickTime.
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-no_arch_warnings")
 	# Specify target CPUs.
-	set(TARGET_FLAGS "${TARGET_FLAGS} -mssse3")
+	set(TARGET_FLAGS "${TARGET_FLAGS} -mssse4.2")
 	set(TARGET_FLAGS "${TARGET_FLAGS} -march=core2")
 	# Target flags apply to both C and C++ compilation.
 	# CMake passes these to the compiler on the link command line as well.
